@@ -1,0 +1,23 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+    <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="chooseAvatar">
+        <image class="avatar" src="{{avatarUrl}}" mode=""/>
+    </button>
+    <view class="nickname-wrapper">
+        <text class="nickname-label">昵称</text>
+        <input class="nickname-input" type="nickname" placeholder="请输入您的昵称" bind:change="InputChange"/>
+    </view>
+
+  <!-- 授权获取手机号按钮（直接触发，无需提前登录code，仅做标识时可简化） -->
+  <!-- <button 
+    class="phone-btn" 
+    open-type="getPhoneNumber" 
+    bindgetphonenumber="getPhoneId"
+  > -->
+  <button 
+    class="phone-btn" 
+    bind:tap="getPhoneId"
+  >
+    授权登录
+  </button>
+</view>

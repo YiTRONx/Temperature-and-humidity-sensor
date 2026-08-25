@@ -1,0 +1,32 @@
+<!--pages/setpage/setpage.wxml-->
+<view class="top">
+    <view class="topBar">
+        <view class="topBarText">
+            <view class="topBarNAME">{{equNAME}}</view>
+            <view class="topBarID">{{equID}}</view>
+        </view>
+    </view>
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">通用设置</view>
+        <view class="modal-general">
+            <view class="seton" bind:tap="equnickname" data-fullUUID="{{fullUUID}}" data-deviceId="{{deviceId}}" data-nickname="{{deviceConfig.nickname}}">设备名称
+                <view class="defaultdata">{{deviceConfig.nickname?deviceConfig.nickname:'unknow'}}</view>
+            </view>
+            <view class="setonbottom" bind:tap="equadd" data-fullUUID="{{fullUUID}}" data-deviceId="{{deviceId}}" data-equname="{{equNAME}}" data-location="{{deviceConfig.location}}">设备位置
+                <view class="defaultdata">{{deviceConfig.location?deviceConfig.location:'unknow'}}</view>
+            </view>
+        </view>
+        <view class="minititle">设备设置</view>
+        <view class="modal-mainset">
+            <view class="seton" bind:tap="equwifi" data-fullUUID="{{fullUUID}}" data-deviceId="{{deviceId}}" data-equname="{{equNAME}}">Wi-Fi设置</view>
+            <view class="setonbottom" bind:tap="equalarm" data-fullUUID="{{fullUUID}}" data-deviceId="{{deviceId}}" data-TempMin="{{deviceConfig.temp.low}}" data-TempMax="{{deviceConfig.temp.high}}" data-HumMin="{{deviceConfig.hum.low}}" data-HumMax="{{deviceConfig.hum.high}}">报警上下限</view>
+        </view>
+        <view class="minititle">其他设置</view>
+        <view class="modal-otherset">
+            <view class="seton" bind:tap="otherset" data-fullUUID="{{fullUUID}}" data-deviceId="{{deviceId}}" data-refresh="{{deviceConfig.refreshInterval}}" data-screen="{{deviceConfig.screenOffTime}}">更多设置</view>
+            <view class="seton" bind:tap="equOTA">固件更新<view class="defaultdata">该功能暂未实现</view></view>
+            <view class="setonbottom" bind:tap="equdetailed" data-equid="{{equID}}" data-equname="{{equNAME}}">设备规格</view>
+        </view>
+        <view class="unbind" bind:tap="unbind">解绑设备</view>
+    </scroll-view>
+</view>

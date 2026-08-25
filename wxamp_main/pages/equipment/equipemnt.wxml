@@ -1,0 +1,57 @@
+<!--pages/equipment/equipemnt.wxml-->
+<view class="topbar">
+    <scroll-view scroll-y wx:if="{{selectedDevices.length>0}}" class="equlist" show-scrollbar="{{false}}" enhanced>
+        <view wx:for="{{selectedDevices}}" wx:key="fullUUID" class="equ"  bind:tap="opendetailed" data-fullUUID="{{item.fullUUID}}" data-deviceId="{{item.deviceId}}" data-equname="{{item.equNAME}}">
+            <!-- <view wx:if="{{item.equNickName}}" class="modal-equname">{{item.equNickName}}</view> -->
+            <view  class="modal-equname">{{item.equNAME}}</view>
+            <view class="modal-equid">ID:{{item.equID}}</view>
+            <view class="modal-equdetailed">
+                <view class="modal-temhum">
+                    <view wx:if="{{item.IsOnline}}"><image src="/icons/wendu.png" class="modal-temhumicon"/>{{item.equTEMP}}℃</view>
+                    <view wx:if="{{item.IsOnline}}"><image src="/icons/shidu.png" class="modal-temhumicon"/>{{item.equHUM}}%</view>
+
+                    <view wx:else class="modal-outline"><view style="background-color:red; width: 25rpx;height: 25rpx;border-radius: 50%;margin-right: 10rpx;"></view>设备离线</view>
+                </view>
+                <image src="/icons/wenshiduchuanganqi_o.png" class="equicon" />
+            </view>
+        </view>
+        <view style="margin: 20rpx 100rpx 200rpx;height:200rpx;text-align: center;">点击设备进入详情页面</view> 
+    </scroll-view>
+
+    <view wx:else class="equtext">点击下方“+”添加新设备</view>
+</view>
+<view class="bottonbutton">
+    <button style="height: 100rpx; width: 100rpx; padding:25rpx 25rpx; border-radius: 50%;" bind:tap="showequ">
+        <image src="/icons/add-s.png" class="buttonimage"/>
+    </button>
+</view>
+
+
+
+<!-- 设备选择弹窗（默认隐藏） -->
+<view wx:if="{{isModalShow}}" class="modal-mask" bindtap="hideDeviceModal"></view>
+<view wx:if="{{isModalShow}}" class="modal-container">
+  <view class="modal-title">选择设备</view>
+  <!-- 设备列表（可滚动） -->
+  <scroll-view scroll-y class="device-scroll" show-scrollbar="{{false}}" enhanced>
+    <view 
+      wx:for="{{equlist}}" 
+      wx:key="equID" 
+      class="modal-device-item"
+      data-device="{{item}}"
+      bindtap="selectDevice"
+    >
+      <view class="device-info">
+        <view class="modal-device-name">{{item.equNAME}}</view>
+        <view class="modal-device-type">{{item.equID}}</view>
+      </view>
+      <!-- 选中状态图标 -->
+      <view wx:if="{{item.selected}}" class="selected-icon">✔</view>
+    </view>
+  </scroll-view>
+  <!-- 弹窗底部按钮 -->
+  <view class="modal-footer">
+    <button bindtap="hideDeviceModal" class="cancel-btn">取消</button>
+    <button bindtap="confirmSelect" class="confirm-btn">确认</button>
+  </view>
+</view>

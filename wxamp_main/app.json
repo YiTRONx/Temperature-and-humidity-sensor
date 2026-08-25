@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/equipment/equipemnt",
+    "pages/detailed/detailed",
+    "pages/detailed/detaileddaily/detaileddaily",
+    "pages/setpage/setpage",
+    "pages/setpage/equnickname/equnickname",
+    "pages/setpage/equadd/equadd",
+    "pages/setpage/equwifi/equwifi",
+    "pages/setpage/equalarm/equalarm",
+    "pages/setpage/equdetailed/equdetailed",
+    "pages/setpage/otherset/otherset",
+    "pages/my/my",
+    "pages/my/mydetailed/mydetailed",
+    "pages/my/mynotice/mynotice",
+    "pages/my/mygeneral/mygeneral",
+    "pages/my/myhelp/myhelp",
+    "pages/login/login",
+    "pages/canvasfortime/canvasfortime"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小亦智能物联IOT",
+    "navigationBarBackgroundColor": "#101010"
+  },
+  "tabBar": {
+    "backgroundColor": "#101010",
+    "color": "#666666",
+    "selectedColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/equipment/equipemnt",
+        "text": "设备",
+        "iconPath": "/icons/shebeiguanli-2.png",
+        "selectedIconPath": "/icons/shebeiguanli.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/icons/yonghu.png",
+        "selectedIconPath": "/icons/yonghu-2.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

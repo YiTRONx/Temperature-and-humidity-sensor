@@ -1,0 +1,18 @@
+<view class="top">
+  <view class="date-picker-wrapper">
+    <text class="picker-title">历史日期：</text>
+    <!-- <picker mode="date" value="{{selectDate}}" start="2020-01-01" end="{{todayDate}}" bindchange="onDateChange"> -->
+    <picker 
+    mode="selector" 
+    range="{{dateList}}" 
+    value="{{dateIndex}}" 
+    bindchange="onDateChange">
+      <view class="picker-display">{{selectDate}}</view>
+    </picker>
+  </view>
+
+  <view class="chart-box">
+    <canvas type="2d" id="dailyChart" class="chart-canvas"></canvas>
+    <view wx:if="{{chartData.length === 0}}" class="empty-text">暂无数据</view>
+  </view>
+</view>

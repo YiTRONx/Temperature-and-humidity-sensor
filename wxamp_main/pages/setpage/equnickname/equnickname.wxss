@@ -1,0 +1,87 @@
+/* pages/setpage/equnickname/equnickname.wxss */
+/* pages/setpage/equalarm/equalarm.wxss */
+page{
+    background-color: #101010;
+}
+
+.top{
+    width: 750rpx;
+    height: auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.setlist{
+    margin-top: 30rpx;
+    height: 1200rpx;
+    width: 650rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.seton{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    text-align: right;
+    border-bottom: solid 1rpx #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setonbottom{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+.defaultdata{
+    color: #666;
+    text-justify: center;
+    margin-top: 5rpx;
+    margin-right: 20rpx;
+}
+
+.modal-general{
+    width: 650rpx;
+    height: auto;
+    background-color: #222;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.minititle{
+    margin-top: 20rpx;
+    margin-bottom: 10rpx;
+    margin-left: 5rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+
+.connect{
+    text-align: center;
+    color: white;
+    margin-top: 20rpx;
+    background-color: #222;
+    height: 100rpx;
+    width: 650rpx;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

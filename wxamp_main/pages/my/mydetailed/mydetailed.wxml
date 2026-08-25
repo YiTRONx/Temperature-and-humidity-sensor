@@ -1,0 +1,6 @@
+<!--pages/my/mydetailed/mydetailed.wxml-->
+<view class="top">
+    <view class="userinfo">
+        <view class="userid">{{userUniqueId}}</view>
+    </view>
+</view>

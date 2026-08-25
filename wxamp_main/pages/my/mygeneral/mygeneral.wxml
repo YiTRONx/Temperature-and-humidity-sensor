@@ -1,0 +1,13 @@
+<!--pages/my/mygeneral/mygeneral.wxml-->
+<!-- 订阅消息授权按钮 -->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">通知开关</view>
+        <view class="modal-general">
+            <view class="setonbottom">是否开启通知
+                <button bindtap="subscribeMsg" class="button"><view style="margin-top: -5rpx;">开启设备通知</view></button>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<!-- <button bindtap="subscribeMsg">开启设备通知</button> -->

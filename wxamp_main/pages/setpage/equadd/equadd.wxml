@@ -1,0 +1,12 @@
+<!--pages/setpage/equadd/equadd.wxml-->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">设备位置设置</view>
+        <view class="modal-general">
+            <view class="setonbottom">设备位置
+                <input class="defaultdata" placeholder-style="text-align:right" placeholder="输入设备位置" value="{{location}}" bindinput="inputLocation" />
+            </view>
+        </view>
+        <view wx:if="true" class="connect" bind:tap="connect">保存</view>
+    </scroll-view>
+</view>

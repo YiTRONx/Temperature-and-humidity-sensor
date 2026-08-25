@@ -1,0 +1,17 @@
+<!-- pages/chartPage/chartPage.wxml -->
+<view class="container">
+  <view class="chart-card">
+    <view class="chart-title">最近半小时数据（1秒更新）</view>
+    <canvas type="2d" id="halfHourChart" class="chart-canvas"></canvas>
+    <view class="chart-controls">
+      <button bindtap="changeTimeRange" data-range="10">10分钟</button>
+      <button bindtap="changeTimeRange" data-range="30" class="active">30分钟</button>
+      <button bindtap="changeTimeRange" data-range="60">60分钟</button>
+    </view>
+  </view>
+  
+  <view class="chart-card">
+    <view class="chart-title">今日24小时数据（1分钟更新）</view>
+    <canvas type="2d" id="dayChart" class="chart-canvas"></canvas>
+  </view>
+</view>

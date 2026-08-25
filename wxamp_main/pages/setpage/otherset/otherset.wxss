@@ -1,0 +1,96 @@
+/* pages/setpage/otherset/otherset.wxss */
+page{
+    background-color: #101010;
+}
+
+.top{
+    width: 750rpx;
+    height: auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.setlist{
+    margin-top: 30rpx;
+    height: 1200rpx;
+    width: 650rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.seton{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    border-bottom: solid 1rpx #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setonbottom{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.defaultdata{
+    color: #666;
+    text-justify: center;
+    margin-top: 5rpx;
+    margin-right: 20rpx;
+}
+
+.modal-general{
+    width: 650rpx;
+    height: auto;
+    background-color: #222;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.minititle{
+    margin-top: 20rpx;
+    margin-bottom: 10rpx;
+    margin-left: 5rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+
+
+.date-picker-wrapper{
+    width: 690rpx;
+    height: 88rpx;
+    background-color: #222;
+    border-radius: 16rpx;
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+  }
+  .picker-title{
+    font-size: 28rpx;
+    color: #fff;
+    margin-right: 20rpx;
+  }
+  .picker-display{
+    flex: 1;
+    font-size: 28rpx;
+    color: #07c160;
+    height: 100%;
+    line-height: 88rpx;
+  }

@@ -1,0 +1,18 @@
+<!--pages/setpage/equwifi/equwifi.wxml-->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">WiFi设置</view>
+        <view class="modal-general">
+            <view class="seton">WiFi名称
+                <!-- <view class="defaultdata">NULL</view> -->
+                <input class="defaultdata" placeholder="输入WiFi名称" bindinput="inputSSID" />
+            </view>
+            <view class="setonbottom">WiFi密码
+                <!-- <view class="defaultdata">NULL</view> -->
+                <input class="defaultdata" placeholder="输入WiFi密码" password bindinput="inputPass" />
+            </view>
+        </view>
+        <view wx:if="true" class="connect" bindtap="connect">连接</view>
+        <view wx:if="" class="connected">连接</view>
+    </scroll-view>
+</view>

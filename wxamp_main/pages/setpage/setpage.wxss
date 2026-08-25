@@ -1,0 +1,159 @@
+/* pages/setpage/setpage.wxss */
+page{
+    background-color: #101010;
+}
+
+.top{
+    width: 750rpx;
+    height: auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.topBar{
+    margin-top: 50rpx;
+    background-color: #222;
+    height: 100rpx;
+    width: 650rpx;
+    border-radius: 20rpx; 
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center; 
+}
+
+.topBarText{
+    width: 500rpx;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.topBarNAME{
+    color: white;
+    font-size: 35rpx;
+}
+
+.topBarID{
+    color: #666;
+    font-size: 25rpx;
+}
+
+.setlist{
+    margin-top: 30rpx;
+    height: 1200rpx;
+    width: 650rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.seton{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    border-bottom: solid 1rpx #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setonbottom{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setoff{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    border-bottom: solid 1rpx #666;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setoffbottom{
+    margin-top: 30rpx;
+    padding-bottom: 25rpx;
+    height: 50rpx;
+    width: 600rpx;
+    text-justify: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.defaultdata{
+    color: #666;
+    text-justify: center;
+    margin-top: 5rpx;
+    margin-right: 20rpx;
+}
+
+.modal-general{
+    width: 650rpx;
+    height: auto;
+    background-color: #222;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.modal-mainset{
+    width: 650rpx;
+    height: auto;
+    background-color: #222;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.modal-otherset{
+    width: 650rpx;
+    height: auto;
+    background-color: #222;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.minititle{
+    margin-top: 20rpx;
+    margin-bottom: 10rpx;
+    margin-left: 5rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+
+.unbind{
+    text-align: center;
+    color: red;
+    margin-top: 20rpx;
+    background-color: #222;
+    height: 100rpx;
+    width: 650rpx;
+    border-radius: 20rpx; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}

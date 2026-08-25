@@ -1,0 +1,35 @@
+/* pages/my/mydetailed/mydetailed.wxss */
+page{
+    background-color: #101010;
+}
+
+.top{
+    width: 750rpx;
+    height: auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userinfo{
+    margin-top: 50rpx;
+    background-color: #222;
+    height: auto;
+    width: 650rpx;
+    border-radius: 20rpx; 
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center; 
+}
+
+.userid{
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+    width: 550rpx;
+    height: auto;
+    word-break: break-all;
+    color: #666;
+}

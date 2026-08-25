@@ -1,0 +1,69 @@
+<!--pages/setpage/equalarm/equalarm.wxml-->
+<!-- <view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">报警上下限设置</view>
+        <view class="modal-general">
+            <view class="seton">报警上限
+                <view class="defaultdata">NULL</view>
+            </view>
+            <view class="setonbottom">报警下限
+                <view class="defaultdata">NULL</view>
+            </view>
+        </view>
+        <view wx:if="true" class="connect" bind:tap="connect">保存</view>
+    </scroll-view>
+</view> -->
+<!--pages/setpage/equalarm/equalarm.wxml-->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">报警上下限设置</view>
+        <view class="modal-general">
+        <!-- 温度阈值滑块区域 -->
+        <view class="threshold-section-up">
+            <view class="section-title">温度阈值 (°C)</view>
+            <view class="slider-container">
+                <view class="slider-label">下限：{{tempMin}}°C | 上限：{{tempMax}}°C</view>
+                <!-- 温度滑块轨道 -->
+                <view class="slider-track" 
+                      bindtouchstart="onTouchStart" 
+                      bindtouchmove="onTouchMove"
+                      data-type="temp">
+                    <!-- 左滑块（下限） -->
+                    <view class="slider-handle left" 
+                          style="left: {{tempLeftPercent}}%;"></view>
+                    <!-- 右滑块（上限） -->
+                    <view class="slider-handle right" 
+                          style="left: {{tempRightPercent}}%;"></view>
+                    <!-- 滑块选中区域 -->
+                    <view class="slider-selected" 
+                          style="left: {{tempLeftPercent}}%; right: {{100 - tempRightPercent}}%;"></view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 湿度阈值滑块区域 -->
+        <view class="threshold-section-bottom">
+            <view class="section-title">湿度阈值 (%)</view>
+            <view class="slider-container">
+                <view class="slider-label">下限：{{humMin}}% | 上限：{{humMax}}%</view>
+                <!-- 湿度滑块轨道 -->
+                <view class="slider-track" 
+                      bindtouchstart="onTouchStart" 
+                      bindtouchmove="onTouchMove"
+                      data-type="hum">
+                    <!-- 左滑块（下限） -->
+                    <view class="slider-handle left" 
+                          style="left: {{humLeftPercent}}%;"></view>
+                    <!-- 右滑块（上限） -->
+                    <view class="slider-handle right" 
+                          style="left: {{humRightPercent}}%;"></view>
+                    <!-- 滑块选中区域 -->
+                    <view class="slider-selected" 
+                          style="left: {{humLeftPercent}}%; right: {{100 - humRightPercent}}%;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+        <view class="connect" bind:tap="saveThreshold">保存阈值</view>
+    </scroll-view>
+</view>

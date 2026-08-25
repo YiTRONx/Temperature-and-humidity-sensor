@@ -1,0 +1,13 @@
+<!--pages/my/myhelp/myhelp.wxml-->
+<text>pages/my/myhelp/myhelp.wxml</text>
+<view class="top">
+    <view>
+        <image class="toplogo" src="/icons/wenshiduchuanganqi_o.png" mode=""/>
+    </view>
+    <view class="texttop">
+        <view class="bottomtext" style="font-size: 50rpx;">温湿度监测系统</view> 
+        <view class="bottomtext" style="font-size: 30rpx; color: #666;">测试版V0.0.1</view>
+        <view class="bottomtext" style="font-size: 30rpx; color: #666;">2025.12.09</view>
+    </view>
+    <view style="font-size: 40rpx; color: #666; margin-top: 600rpx;">2202110114</view>
+</view>

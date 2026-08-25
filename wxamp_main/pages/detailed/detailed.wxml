@@ -1,0 +1,23 @@
+<!--pages/detailed/detailed.wxml-->
+<view class="top">
+    <view class="topBar">
+        <view class="topBarLED" style="background-color: {{thisDevices.IsOnline ?'#07c160' : 'red'}} ;"></view>
+        <view class="topBarText">
+            <view class="topBarNAME">{{equNAME}}</view>
+            <view class="topBarID">{{equID}}</view>
+        </view>
+        <image src="/icons/shezhi.png" class="topBarSet" bind:tap="opensetpage" data-fulluuid="{{fullUUID}}" data-deviceid="{{deviceId}}" data-equname="{{equNAME}}"/>
+    </view>
+    <view class="topTEMPHUM">
+        <view class="TEMPHUM"><image src="/icons/wendu.png" class="TEMPHUMicon"/>温度：{{thisDevices.equTEMP}}℃</view>
+        <view class="TEMPHUM"><image src="/icons/shidu.png" class="TEMPHUMicon"/>湿度：{{thisDevices.equHUM}}%</view>
+    </view>
+
+    <view class="container">
+        <view class="chart-card" bind:tap="opendaily" data-fulluuid="{{fullUUID}}" data-deviceid="{{deviceId}}" data-equname="{{equNAME}}">
+            <canvas type="2d" id="halfHourChart" class="chart-canvas"></canvas>
+        </view>
+        <view style="margin: 20rpx 100rpx 200rpx;height:200rpx;text-align: center;">点击折线图进入历史数据页面</view> 
+    </view>
+
+</view>

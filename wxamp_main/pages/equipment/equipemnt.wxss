@@ -1,0 +1,205 @@
+/* pages/equipment/equipemnt.wxss */
+page{
+    background-color: #101010;
+}
+
+.topbar{
+    width: 750rpx;
+    height: auto;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.equtext{
+    margin-top: 50rpx;
+    width: 650rpx;
+    height: 1050rpx;
+    border:1rpx dashed;
+    border-radius: 50rpx;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.equlist{
+    margin-top: 30rpx;
+    width: 650rpx;
+    height: 1250rpx;
+    /* border:1rpx dashed;*/
+    border-radius: 50rpx; 
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center; 
+}
+
+/* 设备容器顶层 */
+.equ{
+    margin-top: 20rpx;
+    width: 650rpx;
+    height: 350rpx;
+    /* border:1rpx solid; */
+    border-radius: 50rpx;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+/* 设备容器内部数据 */
+.modal-equname{
+    margin: 70rpx 50rpx 5rpx;
+    font-size: 50rpx;
+    font-weight: 200;
+}
+
+.modal-equid{
+    margin: 0rpx 50rpx;
+    font-size: 25rpx;
+    color: #666;
+}
+
+.modal-equdetailed{
+    margin-top: -50rpx;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.modal-outline{
+    margin-top: 25rpx;
+    display: flex;
+    align-items: center; 
+}
+
+.modal-temhumicon{
+    margin-right: 10rpx;
+    width: 25rpx;
+    height: 25rpx;
+}
+.modal-temhum{
+    width: 200rpx;
+    margin: 100rpx 50rpx ;
+}
+
+.equicon{
+    margin-top: 30rpx;
+    margin-left:150rpx;
+    margin-bottom: 50rpx;
+    width: 150rpx;
+    height: 150rpx;
+}
+
+/* 底部按键 */
+.bottonbutton{
+    position: absolute;
+    bottom: 50rpx; 
+
+    left: 0;
+    right: 0;
+    margin:0 auto;
+}
+
+.buttonimage{
+    width: 50rpx;
+    height: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+ /* 弹窗遮罩层 */
+ .modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(50,50,50, 0.5);
+    z-index: 998;
+  }
+  
+  /* 弹窗容器 */
+  .modal-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    color: #fff;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    z-index: 999;
+    padding: 30rpx;
+    box-sizing: border-box;
+    border-radius: 30rpx;
+  }
+  
+  .modal-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20rpx;
+  }
+  
+  /* 弹窗设备列表滚动区域 */
+  .device-scroll {
+    height: 500rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .modal-device-item {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    background-color: #222;
+    /* border: 1rpx solid #f0f0f0; */
+    border-radius: 20rpx;
+  }
+  
+  .modal-device-name {
+    font-size: 28rpx;
+    font-weight: 500;
+  }
+  
+  .modal-device-type {
+    font-size: 24rpx;
+    color: #666;
+  }
+  
+  .selected-icon {
+    color: #07c160;
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+  
+  /* 弹窗底部按钮 */
+  .modal-footer {
+    width: 100%;
+    display: flex;
+    gap: 20rpx;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn, .confirm-btn {
+    border-radius: 20rpx;
+    font-size: 28rpx;
+  }
+  
+  .cancel-btn {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .confirm-btn {
+    background-color: #07c160;
+    color: #fff;
+  }

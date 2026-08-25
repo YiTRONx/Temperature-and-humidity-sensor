@@ -1,0 +1,97 @@
+page{
+    background-color: #101010;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .top{
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx;
+    box-sizing: border-box;
+  }
+  
+  .topBar{
+    margin-top: 30rpx;
+    background-color: #222222;
+    height: 100rpx;
+    width: 690rpx;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+  }
+  .topBarLED{
+    width: 28rpx;
+    height: 28rpx;
+    border-radius: 50%;
+    margin-right: 25rpx;
+  }
+  .topBarText{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .topBarNAME{
+    font-size: 34rpx;
+    color: #fff;
+  }
+  .topBarID{
+    font-size: 24rpx;
+    color: #888;
+    margin-top: 6rpx;
+  }
+  .topBarSet{
+    width: 48rpx;
+    height: 48rpx;
+  }
+  
+  .date-picker-wrapper{
+    width: 690rpx;
+    height: 88rpx;
+    background-color: #222;
+    border-radius: 16rpx;
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+  }
+  .picker-title{
+    font-size: 28rpx;
+    color: #fff;
+    margin-right: 20rpx;
+  }
+  .picker-display{
+    flex: 1;
+    font-size: 28rpx;
+    color: #07c160;
+    height: 100%;
+    line-height: 88rpx;
+  }
+  
+  .chart-box{
+    width: 690rpx;
+    height: 520rpx;
+    background-color: #222;
+    border-radius: 16rpx;
+    margin-top: 30rpx;
+    padding-top: 30rpx;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chart-canvas{
+    width: 100%;
+    height: 100%;
+  }
+  .empty-text{
+    font-size: 28rpx;
+    color: #666;
+    position: absolute;
+  }

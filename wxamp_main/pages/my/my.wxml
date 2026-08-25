@@ -1,0 +1,16 @@
+<!--pages/my/my.wxml-->
+<view class="top">
+    <view class="userinfo" bind:tap="userinfo">
+        <image class="userimage" src="{{avatarUrl}}" mode=""/>
+        <view class="usernickname">{{nickName}}</view>
+        <image class="sanjiaojiantou" src="/icons/sanjiaojiantou.png" mode=""/>
+    </view>
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="modal-mainset">
+            <!-- <view class="seton" bind:tap="mynotice">通知设置</view> -->
+            <view class="seton" bind:tap="mygeneral">通用设置</view>
+            <view class="setonbottom" bind:tap="myhelp">帮助与反馈</view>
+        </view>
+        <view wx:if="{{IsLogin}}" class="unlog" bind:tap="unlog">退出登录</view>
+    </scroll-view>
+</view>

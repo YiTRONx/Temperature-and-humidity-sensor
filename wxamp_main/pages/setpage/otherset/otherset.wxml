@@ -1,0 +1,32 @@
+<!--pages/setpage/otherset/otherset.wxml-->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">更多设置</view>
+        <view class="modal-general">
+
+            <picker 
+                mode="selector" 
+                range="{{refreshList}}" 
+                value="{{selectedRefreshTime}}" 
+                bindchange="onRefreshChange">
+            <view class="seton">刷新频率<view class="defaultdata">{{refreshList[selectedRefreshTime]}}</view></view>
+            </picker>
+           
+            <picker 
+                mode="selector" 
+                range="{{screenList}}" 
+                value="{{selectedScreenTime}}" 
+                bindchange="onScreenChange">
+            <view class="seton">熄屏时间<view class="defaultdata">{{screenList[selectedScreenTime]}}</view></view>
+            </picker>
+
+            <view class="seton">服务器设置
+                <view class="defaultdata">此设置暂时不可更改</view>
+            </view>
+
+            <view class="setonbottom" style="color:red" bind:tap="CLEARCLEARCLEAR">恢复所有配置
+                <!-- <view class="defaultdata">NULL</view> -->
+            </view>
+        </view>
+    </scroll-view>
+</view>

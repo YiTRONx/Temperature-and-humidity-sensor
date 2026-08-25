@@ -1,0 +1,22 @@
+<!--pages/setpage/equdetailed/equdetailed.wxml-->
+<!--pages/my/myhelp/myhelp.wxml-->
+<view class="top">
+    <view>
+        <image class="toplogo" src="/icons/wenshiduchuanganqi_o.png" mode=""/>
+    </view>
+    <view class="texttop">
+        <view class="bottomtext" style="font-size: 50rpx;">温湿度传感器V2.1</view> 
+        <view class="bottomtext" style="font-size: 30rpx; color: #666;">设备ID：{{equID}}</view>
+
+        <!-- <view wx:if="{{equNAME=='温湿度传感器V0'}}" class="bottomtext" style="font-size: 30rpx; color: #666;">主控芯片：-</view>
+        <view wx:if="{{equNAME=='温湿度传感器V0'}}" class="bottomtext" style="font-size: 30rpx; color: #666;">传感器型号：-</view>
+        <view wx:if="{{equNAME=='温湿度传感器V0'}}" class="bottomtext" style="font-size: 30rpx; color: #666; width: 550rpx;">该设备为测试所用虚拟设备，不配备硬件系统以及服务器连接，配备随机数据更新代码以达到随机数据更新效果，数据仅供测试，不具备实际效果</view> -->
+
+        <view wx:if="{{equNAME=='温湿度传感器V1'}}" class="bottomtext" style="font-size: 30rpx; color: #666;">主控芯片：ESP32-S3 Supermini</view>
+        <view wx:if="{{equNAME=='温湿度传感器V1'}}" class="bottomtext" style="font-size: 30rpx; color: #666;">传感器型号：AHT10</view>
+        <view wx:if="{{equNAME=='温湿度传感器V1'}}" class="bottomtext" style="font-size: 30rpx; color: #666;">made by YiTRON Xie 2202110114</view>
+
+
+        <view class="bottomtext" style="font-size: 30rpx; color: #666;">2026.05.10</view>
+    </view>
+</view>

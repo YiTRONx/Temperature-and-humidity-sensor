@@ -1,0 +1,124 @@
+/* pages/detailed/detailed.wxss */
+page{
+    background-color: #101010;
+}
+
+.top{
+    width: 750rpx;
+    height: auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.topBar{
+    margin-top: 50rpx;
+    background-color: #222;
+    height: 100rpx;
+    width: 650rpx;
+    border-radius: 20rpx; 
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center; 
+}
+
+.topBarLED{
+    width: 25rpx;
+    height: 25rpx;
+    border-radius: 50%;
+    margin-right: 25rpx;
+}
+
+.topBarText{
+    width: 500rpx;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.topBarNAME{
+    color: white;
+    font-size: 35rpx;
+}
+
+.topBarID{
+    color: #666;
+    font-size: 25rpx;
+}
+
+.topBarSet{
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 5rpx;
+}
+
+.topTEMPHUM{
+    margin-top: 50rpx;
+    background-color: #07c160;
+    height: 550rpx;
+    width: 550rpx;
+    border-radius: 50%; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.TEMPHUMicon{
+    /* margin-top: 20rpx; */
+    margin-right: 10rpx;
+    padding-top: 10rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.TEMPHUM{
+    color: white;
+    margin-top: 45rpx;
+    margin-left: 50rpx;
+    width: 400rpx;
+    height: 100rpx;
+    /* text-align: center; */
+    font-size: 50rpx;
+}
+
+
+
+/* pages/chartPage/chartPage.wxss */
+.container {
+    padding: 20rpx;
+    background-color: #101010;
+    margin-top: 50rpx;
+  }
+  
+  .chart-card {
+    background-color: #222;
+    border-radius: 16rpx;
+    padding: 20rpx;
+    margin-bottom: 10rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+    width:650rpx;
+    height: 400rpx;
+  }
+  
+  .chart-title {
+    font-size: 28rpx;
+    font-weight: 500;
+    margin-bottom: 15rpx;
+    color: #333;
+  }
+  
+  .chart-canvas {
+    /* width: 100%; */
+    padding-top: 80rpx;
+    height: 350rpx;
+    width: 650rpx;
+    margin-bottom: 15rpx;
+  }
+  

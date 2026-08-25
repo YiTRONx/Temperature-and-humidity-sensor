@@ -1,0 +1,11 @@
+<!--pages/my/mynotice/mynotice.wxml-->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">通知开关</view>
+        <view class="modal-general">
+            <view class="setonbottom">是否开启通知
+                <input class="defaultdata" placeholder="输入设备位置" value="{{location}}" bindinput="inputLocation" />
+            </view>
+        </view>
+    </scroll-view>
+</view>

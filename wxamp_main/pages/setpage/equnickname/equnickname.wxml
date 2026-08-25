@@ -1,0 +1,13 @@
+<!--pages/setpage/equnickname/equnickname.wxml-->
+<!--pages/setpage/equadd/equadd.wxml-->
+<view class="top">
+    <scroll-view scroll-y show-scrollbar="{{false}}" enhanced class="setlist">
+        <view class="minititle">设备名称设置</view>
+        <view class="modal-general">
+            <view class="setonbottom">设备名称
+                <input class="defaultdata" placeholder="输入设备昵称" value="{{nickname}}" bindinput="inputNickname" />
+            </view>
+        </view>
+        <view wx:if="true" class="connect" bind:tap="connect">保存</view>
+    </scroll-view>
+</view>
