@@ -1,0 +1,576 @@
+[
+    {
+        "id": "36146196343219f9",
+        "type": "tab",
+        "label": "流程 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ae09eb24bbf9d33d",
+        "type": "mqtt-broker",
+        "name": "localhost",
+        "broker": "127.0.0.1",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "local_mqtt",
+        "type": "mqtt-broker",
+        "name": "本地MQTT",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "7f19105ddecf05f4",
+        "type": "mqtt in",
+        "z": "36146196343219f9",
+        "name": "收集ESP32温湿度",
+        "topic": "home/sensor/th",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ae09eb24bbf9d33d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 240,
+        "wires": [
+            [
+                "24cd5eae8839b4eb"
+            ]
+        ]
+    },
+    {
+        "id": "24cd5eae8839b4eb",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "function-setcsv",
+        "func": "// 1. 兼容性处理：判断 payload 是对象还是字符串\nlet data;\nif (typeof msg.payload === 'object') {\n    data = msg.payload;\n} else {\n    try {\n        data = JSON.parse(msg.payload);\n    } catch (e) {\n        node.warn(\"JSON解析失败: \" + msg.payload);\n        return null; // 终止流程，防止报错\n    }\n}\n\n// 2. 检查数据里有没有 time 字段\nif (data && data.time) {\n    // 提取日期 (例如 \"2026-02-21\")\n    let dateStr = data.time.split(\" \")[0];\n\n    // 【核心关键】确保这里的路径是虚拟机里真实存在的\n    // 请把 yourname 换成你虚拟机的实际用户名（比如 test 或 ubuntu）\n    msg.filename = \"C:/User/Administrator/Documents/mqttdata/\" + data.UUID + \"/\" + dateStr + \".csv\";\n\n    // 整理成 CSV 格式：时间,温度,湿度\n    msg.payload = data.time + \",\" + data.temp + \",\" + data.humi + \"\\n\";\n\n    // 打印到调试窗口看一眼路径对不对\n    node.warn(\"准备写入数据: \" + msg.payload + msg.filename );\n    //node.warn(\"准备写入数据: \" + msg.payload);\n    return msg;\n} else {\n    node.warn(\"收到数据但缺失 time 字段: \" + JSON.stringify(data));\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "ca8353cfa8427ce5"
+            ]
+        ]
+    },
+    {
+        "id": "ca8353cfa8427ce5",
+        "type": "file",
+        "z": "36146196343219f9",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 640,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18902fc3b23290d1",
+        "type": "http in",
+        "z": "36146196343219f9",
+        "name": "请求获取历史数据",
+        "url": "/history",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "ad4b23519787a94c"
+            ]
+        ]
+    },
+    {
+        "id": "ad4b23519787a94c",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "function-getcsv",
+        "func": "msg.filename = \"C:/User/Administrator/Documents/mqttdata/\" + msg.req.query.UUID + \"/\" + msg.req.query.date + \".csv\";\nnode.warn(\"读取到日期\" + msg.req.query.date + \"的设备\" + msg.req.query.UUID + \"文件地址: \" + msg.filename);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 360,
+        "wires": [
+            [
+                "edd687c2481250c2"
+            ]
+        ]
+    },
+    {
+        "id": "edd687c2481250c2",
+        "type": "file in",
+        "z": "36146196343219f9",
+        "name": "",
+        "filename": "filename",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 640,
+        "y": 360,
+        "wires": [
+            [
+                "b42d0c18c65878eb"
+            ]
+        ]
+    },
+    {
+        "id": "b42d0c18c65878eb",
+        "type": "http response",
+        "z": "36146196343219f9",
+        "name": "http返回历史数据",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "wx_openid_api",
+        "type": "http in",
+        "z": "36146196343219f9",
+        "name": "接收code请求",
+        "url": "/getopenid",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 420,
+        "wires": [
+            [
+                "80b51e3985161f53"
+            ]
+        ]
+    },
+    {
+        "id": "80b51e3985161f53",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "获取OpenID",
+        "func": "// 填入你的小程序 AppID + AppSecret\nconst appid = \"wxe435c2da82571975\";\nconst secret = \"01fe6879dfbfc0f9efd303bf6e443ab3\";\nconst code = msg.payload.code; // 从小程序传过来的 code\n\nmsg.url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 420,
+        "wires": [
+            [
+                "03963aaf54930ce6"
+            ]
+        ]
+    },
+    {
+        "id": "03963aaf54930ce6",
+        "type": "http request",
+        "z": "36146196343219f9",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 580,
+        "y": 420,
+        "wires": [
+            [
+                "cba59eefe8f95239",
+                "8a67345fe770915e"
+            ]
+        ]
+    },
+    {
+        "id": "cba59eefe8f95239",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "保存OpenID",
+        "func": "const data = msg.payload;\n\n// 成功拿到openid\nif (data.openid) {\n    // 1. 把openid存到全局变量（你的MQTT通知直接用！）\n    global.set(\"user_openid\", data.openid);\n\n    // 2. 返回给小程序\n    msg.payload = {\n        code: 0,\n        openid: data.openid,\n        msg: \"success\"\n    };\n} else {\n    // 失败返回错误\n    msg.payload = {\n        code: -1,\n        msg: data.errmsg || \"获取失败\"\n    };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 420,
+        "wires": [
+            [
+                "866eb15c9ea2eb9e"
+            ]
+        ]
+    },
+    {
+        "id": "token_refresh_inject",
+        "type": "inject",
+        "z": "36146196343219f9",
+        "name": "每小时刷新token",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 520,
+        "wires": [
+            [
+                "token_url"
+            ]
+        ]
+    },
+    {
+        "id": "token_url",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "拼接token接口URL",
+        "func": "const appid = \"wxe435c2da82571975\";\nconst secret = \"01fe6879dfbfc0f9efd303bf6e443ab3\";\nmsg.url = \"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxe435c2da82571975&secret=01fe6879dfbfc0f9efd303bf6e443ab3\";\nmsg.method = \"GET\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 520,
+        "wires": [
+            [
+                "token_http",
+                "5333a16172b41670"
+            ]
+        ]
+    },
+    {
+        "id": "token_http",
+        "type": "http request",
+        "z": "36146196343219f9",
+        "name": "获取token",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 660,
+        "y": 520,
+        "wires": [
+            [
+                "save_token"
+            ]
+        ]
+    },
+    {
+        "id": "save_token",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "保存token到全局",
+        "func": "if (msg.payload.access_token) {\n    global.set(\"wx_access_token\", msg.payload.access_token);\n    global.set(\"wx_token_expire\", Date.now() + 7200000);\n    node.log(\"access_token 刷新成功\");\n} else {\n    node.error(\"获取 access_token 失败：\" + JSON.stringify(msg.payload));\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 850,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "mqtt_in",
+        "type": "mqtt in",
+        "z": "36146196343219f9",
+        "name": "监听ESP32报警",
+        "topic": "home/alarm/th",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ae09eb24bbf9d33d",
+        "nl": false,
+        "rap": true,
+        "inputs": 0,
+        "x": 240,
+        "y": 620,
+        "wires": [
+            [
+                "data_mapping"
+            ]
+        ]
+    },
+    {
+        "id": "data_mapping",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "MQTT数据映射模板",
+        "func": "const mqttData = msg.payload;\nconst temp = mqttData.temp;\nconst humi = mqttData.humi;\nconst deviceName = mqttData.Nickname;\nconst alarmType = mqttData.Type;\n\nmsg.templateData = {\n    \"character_string4\": { \"value\": `${temp}℃` },    // 温度\n    \"character_string18\": { \"value\": `${humi}%` },  // 湿度\n    \"thing24\": { \"value\": deviceName },              // 预警来源\n    \"short_thing25\": { \"value\": alarmType }         // 预警类型\n    // \"short_thing25\": { \"value\": \"预警\" }\n};\n\nmsg.templateId = \"80u8sN2gVRBDiM5GApOmYZjYiKAKGWme7YddLpz26CY\";\nmsg.openid = global.get(\"user_openid\");\n\nif (!msg.openid) {\n    node.error(\"用户 openid 未获取\");\n    return null;\n}\n\nmsg.sendPayload = {\n    touser: msg.openid,\n    template_id: msg.templateId,\n    page: \"pages/index/index\",\n    data: msg.templateData\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 620,
+        "wires": [
+            [
+                "check_token"
+            ]
+        ]
+    },
+    {
+        "id": "check_token",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "检查token并拼接URL",
+        "func": "const token = global.get(\"wx_access_token\");\nconst expire = global.get(\"wx_token_expire\");\n\nif (!token || Date.now() > expire) {\n    node.error(\"access_token 无效或已过期\");\n    return null;\n}\n\nmsg.url = `https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=${token}`;\nmsg.method = \"POST\";\nmsg.payload = msg.sendPayload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 640,
+        "y": 620,
+        "wires": [
+            [
+                "e15aeb0af1715994",
+                "f56ebf90538d232b"
+            ]
+        ]
+    },
+    {
+        "id": "e15aeb0af1715994",
+        "type": "http request",
+        "z": "36146196343219f9",
+        "name": "发送微信通知",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "other",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": ""
+            }
+        ],
+        "x": 840,
+        "y": 620,
+        "wires": [
+            [
+                "fbedb70e7bffd87b"
+            ]
+        ]
+    },
+    {
+        "id": "fbedb70e7bffd87b",
+        "type": "debug",
+        "z": "36146196343219f9",
+        "name": "发送结果",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "866eb15c9ea2eb9e",
+        "type": "http response",
+        "z": "36146196343219f9",
+        "name": "返回给小程序",
+        "statusCode": "",
+        "headers": {},
+        "x": 920,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8a67345fe770915e",
+        "type": "debug",
+        "z": "36146196343219f9",
+        "name": "请求数据",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5333a16172b41670",
+        "type": "debug",
+        "z": "36146196343219f9",
+        "name": "拼接结果",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "url",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "f56ebf90538d232b",
+        "type": "debug",
+        "z": "36146196343219f9",
+        "name": "拼接结果",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "5f8d1b7f5a2f7e8c",
+        "type": "http in",
+        "z": "36146196343219f9",
+        "name": "获取历史数据列表",
+        "url": "/getAvailableDates",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "d4f7e2c1b8d90a3f"
+            ]
+        ]
+    },
+    {
+        "id": "d4f7e2c1b8d90a3f",
+        "type": "function",
+        "z": "36146196343219f9",
+        "name": "读取日期列表",
+        "func": "// 获取 UUID 参数\nconst params = msg.req.query || {};\nconst UUID = params.UUID;\nnode.warn(\"请求数据 \" + params.UUID);\n\n// 无UUID直接返回空数组\nif (!UUID) {\n    msg.payload = [];\n    return msg;\n}\n\n// ====================== 【必填】你的数据存储根目录 ======================\n// Windows系统写法 示例：D:/sensor_data/  结尾必须加 /\n// 匹配你的格式： 根目录/UUID/日期.csv\nconst BASE_PATH = \"C:/User/Administrator/Documents/mqttdata/\";\n// ======================================================================\n\n// 拼接完整文件夹路径\nconst targetPath = BASE_PATH + UUID;\nnode.warn(\"获取完整路径 \" + targetPath);\n\n// 调用系统原生文件模块\nconst fs = global.get(\"fs\");\nlet dateList = [];\n\ntry {\n    // 读取文件夹\n    const files = fs.readdirSync(targetPath);\n    // 筛选CSV文件并提取日期\n    dateList = files\n        .filter(file => file.endsWith('.csv'))\n        .map(file => file.replace('.csv', ''))\n        .sort().reverse(); // 日期排序\n} catch (error) {\n    // 文件夹不存在/无权限 → 返回空数组，不报错\n    dateList = [];\n}\n\nmsg.payload = dateList;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 300,
+        "wires": [
+            [
+                "7e6d8c2b1a9f4567"
+            ]
+        ]
+    },
+    {
+        "id": "7e6d8c2b1a9f4567",
+        "type": "http response",
+        "z": "36146196343219f9",
+        "name": "返回数据",
+        "x": 640,
+        "y": 300,
+        "wires": []
+    }
+]
